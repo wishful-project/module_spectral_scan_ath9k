@@ -6,6 +6,7 @@ import logging
 import wishful_upis as upis
 import wishful_framework as wishful_module
 from .csi import receiver as csi_receiver
+from .psd import scanner as psd_scanner
 
 __author__ = "Piotr Gawlowicz"
 __copyright__ = "Copyright (c) 2015, Technische Universität Berlin"
@@ -20,6 +21,12 @@ class SpectralScanAth9kModule(wishful_module.AgentModule):
         self.log = logging.getLogger('wifi_module.main')
         self.channel = 1
         self.power = 1
+
+    def file_write(fn, msg):
+        f = open(fn, 'w')
+        f.write(msg)
+        f.close()
+        return None
 
     @wishful_module.bind_function(upis.radio.set_channel)
     def set_channel(self, channel):
@@ -56,7 +63,6 @@ class SpectralScanAth9kModule(wishful_module.AgentModule):
 
         # receive CSI
         csi = csi_receiver.scan(csi_dev=csi_dev, debug=True)
-        #csi = "I am CSI."
 
 #        # set timer
 #        start_time = time.time()
@@ -68,3 +74,14 @@ class SpectralScanAth9kModule(wishful_module.AgentModule):
 #            time.sleep(1.0)
 
         return csi
+
+    @wishful_module.bind_function(upis.radio.scan_psd)
+    def scan_psd(self, runt=60):
+        self.log.debug("Simple Module scans PSD on interface: {}".format(self.interface))
+
+        # TODO: port stuff from test_psd_scanner.py to here
+
+        # receive PSD samples
+        psd = None
+
+        return psd
