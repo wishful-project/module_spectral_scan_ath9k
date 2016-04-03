@@ -30,7 +30,7 @@ class Plotter():
         # create dummy data
         self.f = list(range(0,SPECTRAL_HT20_NUM_BINS,1))
         self.avg = -120*np.ones(SPECTRAL_HT20_NUM_BINS)
-        self.env = -120*np.ones(SPECTRAL_HT20_NUM_BINS)
+        #self.env = -120*np.ones(SPECTRAL_HT20_NUM_BINS)
 
         # create plot layout
         self._plt = self._win.addPlot(row=1, col=1)
@@ -43,17 +43,18 @@ class Plotter():
         self._plt.setYRange(-120, -40)
         self._plt.clear()
         self._plt.plot(self.f, self.avg, pen=(0, 0, 255))
-        self._plt.plot(self.f, self.env, pen=(255, 0, 0))
+        #self._plt.plot(self.f, self.env, pen=(255, 0, 0))
         self._app.processEvents()
 
-    def updateplot(self, avg, env):
+
+    def updateplot(self, avg):
 
         # update data
         self.avg = avg
-        self.env = env
+        #self.env = env
 
         # update plot
         self._plt.clear()
         self._plt.plot(self.f, self.avg, pen=(0, 0, 255))
-        self._plt.plot(self.f, self.env, pen=(255, 0, 0))
+        #self._plt.plot(self.f, self.env, pen=(255, 0, 0))
         self._app.processEvents()

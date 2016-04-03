@@ -47,7 +47,7 @@ plt = psd_plotter.Plotter()
 psdq = queue.Queue()
 
 # start scan
-print("Start scanning PSD for %d sec in %d sec intervals on interface %s..." %(runt, ival, iface))
+print("Start scanning PSD for %d sec in %d sec intervals on interface %s..." % (runt, ival, iface))
 if (spectral_mode == 'background'):
     psd_helper.scan_dev_start(iface)
 

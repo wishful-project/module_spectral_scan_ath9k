@@ -24,7 +24,7 @@ def scan(iface='wlan0', q=queue.Queue(), debug=False):
     if debug:
         print("Start reading PSD data from scan device...")
 
-    # open PSD device and read all content
+    # open PSD device and read all contents
     fd = open(scan_fn, 'rb')
     buf = fd.read()
     fd.close()

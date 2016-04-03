@@ -64,6 +64,16 @@ def scan_dev_stop(iface):
     return None
 
 
+def scan_dev_drain(iface):
+    ''' drain ath9k built-in spectral sample queue on this device '''
+    debugfs_dir = get_debugfs_dir(iface)
+    scan_fn = debugfs_dir + 'spectral_scan0'
+    fd = open(scan_fn, 'rb')
+    fd.read()
+    fd.close()
+    return None
+
+
 def scan_dev_configure(iface='wlan0', mode='manual', count=8, period=255, fft_period=15, short_repeat=1):
     ''' configure ath9k built-in spectral analysis on this device '''
     debugfs_dir = get_debugfs_dir(iface)
