@@ -14,10 +14,9 @@ from .psd import helper as psd_helper
 #from .psd import plotter as psd_plotter
 
 
-__author__ = "Piotr Gawlowicz"
-__copyright__ = "Copyright (c) 2015, Technische Universität Berlin"
+__author__ = "M. Olbrich"
+__copyright__ = "Copyright (c) 2016, Technische Universität Berlin"
 __version__ = "0.1.0"
-__email__ = "{gawlowicz}@tkn.tu-berlin.de"
 
 
 @wishful_module.build_module
